@@ -45,23 +45,23 @@ class Lab1
                         num = "00" + number.ToString();
                     else
                         num = "0" + number.ToString();
-                    string next_plate = first_letter.ToString() + second_letter.ToString()
-                        + third_letter.ToString() + " " + num;
+                    string next_plate = ((char)first_letter).ToString() + ((char)second_letter).ToString()
+                        + ((char)third_letter).ToString() + " " + num;
                     next_plates.Add(next_plate);
                 }
                 else if (third_letter < 90)
                 {
                     third_letter++;
-                    string next_plate = first_letter.ToString() + second_letter.ToString()
-                        + third_letter.ToString() + " 0000";
+                    string next_plate = ((char)first_letter).ToString() + ((char)second_letter).ToString()
+                        + ((char)third_letter).ToString() + " 0000";
                     next_plates.Add(next_plate);
                 }
                 else if (second_letter < 90)
                 {
                     third_letter = 65;
                     second_letter++;
-                    string next_plate = first_letter.ToString() + second_letter.ToString()
-                        + third_letter.ToString() + " 0000";
+                    string next_plate = ((char)first_letter).ToString() + ((char)second_letter).ToString()
+                        + ((char)third_letter).ToString() + " 0000";
                     next_plates.Add(next_plate);
                 }
                 else if (first_letter < 90)
@@ -69,8 +69,8 @@ class Lab1
                     third_letter = 65;
                     second_letter = 65;
                     first_letter++;
-                    string next_plate = first_letter.ToString() + second_letter.ToString()
-                        + third_letter.ToString() + " 0000";
+                    string next_plate = ((char)first_letter).ToString() + ((char)second_letter).ToString()
+                        + ((char)third_letter).ToString() + " 0000";
                     next_plates.Add(next_plate);
                 }
                 else
