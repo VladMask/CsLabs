@@ -43,8 +43,10 @@ class Lab1
                         num = "000" + number.ToString();
                     else if (number < 100)
                         num = "00" + number.ToString();
-                    else
+                    else if (number < 1000)
                         num = "0" + number.ToString();
+                    else 
+                        num = number.ToString();
                     string next_plate = ((char)first_letter).ToString() + ((char)second_letter).ToString()
                         + ((char)third_letter).ToString() + " " + num;
                     next_plates.Add(next_plate);
