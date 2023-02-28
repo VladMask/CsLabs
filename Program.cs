@@ -28,13 +28,13 @@ class Lab1
         List<string> next_plates = new List<string>();
         foreach (string plate in plates)
         {
-            plate.Replace(" ", "");
             if (IsValid(plate))
             {
+                plate.Replace(" ", "");
                 int first_letter = (int)plate[0];
                 int second_letter = (int)plate[1];
                 int third_letter = (int)plate[2];
-                int number = int.Parse(plate.Substring(3, plate.Length));
+                int number = int.Parse(plate.Substring(3));
                 if (number < 9999)
                 {
                     number++;
@@ -100,8 +100,8 @@ class Lab1
             {
                 string line = streamReader.ReadLine();
                 plates.Add(line);
-                Console.Write(line);
-                Console.WriteLine(IsValid(line));
+                //Console.Write(line);
+                //Console.WriteLine(IsValid(line));
             }
         }
         return plates;
@@ -114,7 +114,7 @@ class Lab1
         List<string> next_plates = NextValue(data);
         for (int i = 0; i < next_plates.Count;i++)  
         {
-            Console.WriteLine("{} ===> {} ", data[i], next_plates[i]);
+            Console.WriteLine("{0} ===> {1}", data[i], next_plates[i]);
         }
     }
 }
