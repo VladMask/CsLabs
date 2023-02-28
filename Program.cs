@@ -46,14 +46,14 @@ class Lab1
                     else
                         num = "0" + number.ToString();
                     string next_plate = first_letter.ToString() + second_letter.ToString()
-                        + third_letter.ToString() + num;
+                        + third_letter.ToString() + " " + num;
                     next_plates.Add(next_plate);
                 }
                 else if (third_letter < 90)
                 {
                     third_letter++;
                     string next_plate = first_letter.ToString() + second_letter.ToString()
-                        + third_letter.ToString() + "0000";
+                        + third_letter.ToString() + " 0000";
                     next_plates.Add(next_plate);
                 }
                 else if (second_letter < 90)
@@ -61,7 +61,7 @@ class Lab1
                     third_letter = 65;
                     second_letter++;
                     string next_plate = first_letter.ToString() + second_letter.ToString()
-                        + third_letter.ToString() + "0000";
+                        + third_letter.ToString() + " 0000";
                     next_plates.Add(next_plate);
                 }
                 else if (first_letter < 90)
@@ -70,7 +70,7 @@ class Lab1
                     second_letter = 65;
                     first_letter++;
                     string next_plate = first_letter.ToString() + second_letter.ToString()
-                        + third_letter.ToString() + "0000";
+                        + third_letter.ToString() + " 0000";
                     next_plates.Add(next_plate);
                 }
                 else
