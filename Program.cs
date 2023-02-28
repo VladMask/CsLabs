@@ -107,14 +107,19 @@ class Lab1
         return plates;
     }
 
+    static void CreateOutput(List<string> plates, List<string> next_plates)
+    {
+        for (int i = 0; i < next_plates.Count; i++)
+        {
+            Console.WriteLine("{0} ===> {1}", plates[i], next_plates[i]);
+        }
+    }
+
     static void Main()
     {
         string fileName = "input_1.txt";
         List<string> data = GetData(fileName);
         List<string> next_plates = NextValue(data);
-        for (int i = 0; i < next_plates.Count;i++)  
-        {
-            Console.WriteLine("{0} ===> {1}", data[i], next_plates[i]);
-        }
+        CreateOutput(data, next_plates);
     }
 }
