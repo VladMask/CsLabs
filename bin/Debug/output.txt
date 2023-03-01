@@ -1,0 +1,13 @@
+Programmer: Me
+
+YEP       1234 ===> YEP 1235
+ABC 123445  ===> Invalid value
+XYZ 9999  ===> XZA 0000
+XYZ 9980  ===> XYZ 9981
+BZZ 9999  ===> CAA 0000
+ZZZ 9999  ===> The last one
+PQR 9999  ===> PQS 0000
+AAA 0000  ===> AAA 0001
+qwe 1234  ===> Invalid value
+123 1ertgrfbkj hb     ===> Invalid value
+AVC        4444  ===> AVC 4445

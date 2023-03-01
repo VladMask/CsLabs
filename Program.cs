@@ -105,15 +105,22 @@ class Lab1
                 //Console.Write(line);
                 //Console.WriteLine(IsValid(line));
             }
+            streamReader.Close();
         }
         return plates;
     }
 
     static void CreateOutput(List<string> plates, List<string> next_plates)
     {
-        for (int i = 0; i < next_plates.Count; i++)
+        StreamWriter streamWriter = new StreamWriter("output.txt");
+        using (streamWriter)
         {
-            Console.WriteLine("{0} ===> {1}", plates[i], next_plates[i]);
+            streamWriter.WriteLine("Programmer: Me\n");
+            for (int i = 0; i < next_plates.Count; i++)
+            {
+                streamWriter.WriteLine("{0} ===> {1}", plates[i], next_plates[i]);
+            }
+            streamWriter.Close();
         }
     }
 
