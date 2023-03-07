@@ -45,7 +45,7 @@ class Lab1
                         num = "00" + number.ToString();
                     else if (number < 1000)
                         num = "0" + number.ToString();
-                    else 
+                    else
                         num = number.ToString();
                     string next_plate = ((char)first_letter).ToString() + ((char)second_letter).ToString()
                         + ((char)third_letter).ToString() + " " + num;
@@ -96,7 +96,7 @@ class Lab1
         List<string> plates = new List<string>();
         StreamReader streamReader = new StreamReader(fileName);
         using (streamReader)
-        {            
+        {
             streamReader.ReadLine();
             while (!streamReader.EndOfStream)
             {
