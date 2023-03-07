@@ -11,3 +11,5 @@ AAA 0000  ===> AAA 0001
 qwe 1234  ===> Invalid value
 123 1ertgrfbkj hb     ===> Invalid value
 AVC        4444  ===> AVC 4445
+
+Number of plates processed: 11

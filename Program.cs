@@ -120,6 +120,7 @@ class Lab1
             {
                 streamWriter.WriteLine("{0} ===> {1}", plates[i], next_plates[i]);
             }
+            streamWriter.WriteLine("\nNumber of plates processed: {0}", plates.Count);
             streamWriter.Close();
         }
     }
