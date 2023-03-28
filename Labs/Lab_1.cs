@@ -4,6 +4,8 @@ using System.IO;
 
 class Lab1
 {
+    static string allowed = "QWERTYUIOPASDFGHJKLZXCVBNM0123456789";
+
     static bool IsValid(string str)
     {
         str = str.Replace(" ", "");
@@ -13,7 +15,6 @@ class Lab1
         string comp_str = str.ToUpper();
         if (comp_str != str)
             return false;
-        string allowed = "QWERTYUIOPASDFGHJKLZXCVBNM0123456789";
         foreach (char s in str)
         {
             int index = allowed.IndexOf(s);
@@ -25,6 +26,7 @@ class Lab1
 
     static List<string> NextValue(List<string> plates)
     {//Z = 90; A = 65;
+        List<string> err = new List<string>();
         List<string> next_plates = new List<string>();
         foreach (string plate in plates)
         {
@@ -84,11 +86,14 @@ class Lab1
             else
             {
                 string next_plate = "Invalid value";
-                next_plates.Add(next_plate);
+                err.Add(next_plate);
             }
         }
-
-        return next_plates;
+        foreach (string error in err)
+        {
+            next_plates.Add(error);
+        }
+            return next_plates;
     }
 
     static List<string> GetData(string fileName)
@@ -125,7 +130,7 @@ class Lab1
         }
     }
 
-    static void Main()
+    static void Main(string[] args)
     {
         string fileName = "input_1.txt";
         List<string> data = GetData(fileName);
