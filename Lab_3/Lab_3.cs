@@ -22,23 +22,22 @@ namespace Lab_3
                 text.Append(streamReader.ReadToEnd());
             }
             streamReader.Close();
-            char[] charText = text.ToString().ToCharArray();
-            int index = 0;
-            while (index < charText.Length + permutations.Length)
+            
+            while (text.Length > 0)
             {
-                if (charText.Length - index >= permutations.Length)
+                if (text.Length >= permutations.Length)
                 {
-                    char[] chars = new char[permutations.Length];
-                    Array.Copy(charText, index, chars, 0, chars.Length);
-                    unscrambled.Append(Unscramble(chars, permutations));
-                    index += permutations.Length;
+                    StringBuilder line = new StringBuilder();
+                    line.Append(text.ToString(0, permutations.Length));
+                    text.Remove(0, permutations.Length);
+                    unscrambled.Append(Unscramble(line.ToString(), permutations));
                 }
                 else
                 {
-                    char[] chars = new char[charText.Length - index];
-                    Array.Copy(charText, index, chars, 0, chars.Length);
-                    unscrambled.Append(Unscramble(chars, permutations));
-                    index += permutations.Length;
+                    StringBuilder line = new StringBuilder();
+                    line.Append(text.ToString(0, text.Length));
+                    text.Remove(0, text.Length);
+                    unscrambled.Append(Unscramble(line.ToString(), permutations));
                 }
             }
 
@@ -47,14 +46,14 @@ namespace Lab_3
             streamWriter.Close();            
         }
 
-        static string Unscramble(char[] charsIn, int[] permutations)
+        static string Unscramble(string input, int[] permutations)
         {
-            char[] chars = new char[charsIn.Length];
-            if (charsIn.Length == permutations.Length)
+            char[] chars = new char[input.Length];
+            if (input.Length == permutations.Length)
             {
-                for (int i = 0; i < charsIn.Length; i++)
+                for (int i = 0; i < input.Length; i++)
                 {
-                    chars[i] = charsIn[permutations[i]];
+                    chars[i] = input[permutations[i]];
                 }
             }
             else
@@ -62,14 +61,14 @@ namespace Lab_3
                 List<int> small = new List<int> { 0 };
                 for (int i = 0; i < permutations.Length; i++)
                 {
-                    if (permutations[i] < charsIn.Length)
+                    if (permutations[i] < input.Length)
                         small.Add(permutations[i]);
                 }
                 int[] smallPermutation = small.ToArray();
-                for (int i = 0; i < charsIn.Length; i++)
+                for (int i = 0; i < input.Length; i++)
                 {
                     
-                    chars[i] = charsIn[smallPermutation[i]];
+                    chars[i] = input[smallPermutation[i]];
                 }
             }
 
