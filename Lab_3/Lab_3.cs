@@ -22,56 +22,62 @@ namespace Lab_3
                 text.Append(streamReader.ReadToEnd());
             }
             streamReader.Close();
-
-            while (text.Length > 0)
+            char[] charText = text.ToString().ToCharArray();
+            int index = 0;
+            while (index < charText.Length + permutations.Length)
             {
-                StringBuilder line = new StringBuilder();
-                line.Append(text.ToString(0,20));
-                text.Remove(0, line.Length);
-                unscrambled.Append(Unscramble(line.ToString(), permutations));
+                if (charText.Length - index >= permutations.Length)
+                {
+                    char[] chars = new char[permutations.Length];
+                    Array.Copy(charText, index, chars, 0, chars.Length);
+                    unscrambled.Append(Unscramble(chars, permutations));
+                    index += permutations.Length;
+                }
+                else
+                {
+                    char[] chars = new char[charText.Length - index];
+                    Array.Copy(charText, index, chars, 0, chars.Length);
+                    unscrambled.Append(Unscramble(chars, permutations));
+                    index += permutations.Length;
+                }
             }
+
             StreamWriter streamWriter = new StreamWriter(foutName); 
             streamWriter.Write(unscrambled.ToString());
             streamWriter.Close();            
         }
 
-
-        static string Unscramble(string input, int[] permutations)
+        static string Unscramble(char[] charsIn, int[] permutations)
         {
-            char[] chars = new char[input.Length];
-            if (input.Length == permutations.Length)
+            char[] chars = new char[charsIn.Length];
+            if (charsIn.Length == permutations.Length)
             {
-                for (int i = 0; i < input.Length; i++)
+                for (int i = 0; i < charsIn.Length; i++)
                 {
-                    chars[i] = input[permutations[i]];
+                    chars[i] = charsIn[permutations[i]];
                 }
             }
             else
             {
-                List<int> perm = new List<int> { 0 };
+                List<int> small = new List<int> { 0 };
                 for (int i = 0; i < permutations.Length; i++)
                 {
-                    if (permutations[i] <= input.Length)
-                        perm.Add(permutations[i]);
+                    if (permutations[i] < charsIn.Length)
+                        small.Add(permutations[i]);
                 }
-                int[] smallPermutation = perm.ToArray();
-                for (int i = 0; i < input.Length; i++)
+                int[] smallPermutation = small.ToArray();
+                for (int i = 0; i < charsIn.Length; i++)
                 {
                     
-                    chars[i] = input[smallPermutation[i]];
+                    chars[i] = charsIn[smallPermutation[i]];
                 }
             }
-            StringBuilder result = new StringBuilder();
-            foreach (char ch in chars)
-            {
-                result.Append(ch);
-            }
 
-            return result.ToString();
+            return string.Join(string.Empty, chars);
         }
 
         static int[] GetPermutations(string fileName)
-        {
+        {//function is OK
             List<int> result = new List<int>();
             StreamReader streamReader = new StreamReader(fileName);
             string line;
@@ -79,16 +85,15 @@ namespace Lab_3
             {
                 streamReader.ReadLine();
                 line = streamReader.ReadLine();
-                line = line.Trim();
             }
             streamReader.Close();
+            line = line.Trim();
             string[] permutationsStr = line.Split();
             foreach (string ln in permutationsStr)
             {
                 if (ln.Length != 0)
                     result.Add(int.Parse(ln));
-            }
-            
+            }            
             return result.ToArray();
         }
 
