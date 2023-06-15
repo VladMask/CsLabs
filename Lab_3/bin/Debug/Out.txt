@@ -1,5 +1,10 @@
-Our indiscretion sometime serves us well 
-When our deep plots do pall, and that should learn us 
-There's a divinity that shapes our ends, 
-Rough-hew them how we will  
-Hmlet .  -a
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Decripting 174 characters
+Using:	0	1	2	3	4	5	6	7	8	9	10	11	12	13	14	15	16	17	18	19	
+		19	9	14	3	16	17	15	2	18	5	12	4	6	7	1	8	10	11	13	0	
+Our indiscretion sometime serves us well
+When our deep plots do pall, and that should learn us
+There's a divinity that shapes our ends,
+Rough-hew them how we will.  - Hamlet
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++

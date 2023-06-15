@@ -22,7 +22,8 @@ namespace Lab_3
                 text.Append(streamReader.ReadToEnd());
             }
             streamReader.Close();
-            
+            text.Replace("\r", "");
+            text.Remove(text.Length - 1, 1);
             while (text.Length > 0)
             {
                 if (text.Length >= permutations.Length)
@@ -41,8 +42,20 @@ namespace Lab_3
                 }
             }
 
-            StreamWriter streamWriter = new StreamWriter(foutName); 
-            streamWriter.Write(unscrambled.ToString());
+            StreamWriter streamWriter = new StreamWriter(foutName);
+            streamWriter.WriteLine("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+            streamWriter.WriteLine($"Decripting {unscrambled.Length} characters");
+            StringBuilder indexes = new StringBuilder();
+            StringBuilder permut = new StringBuilder();
+            for (int i = 0; i < permutations.Length; i++)
+            {
+                indexes.Append(i.ToString() + "\t");
+                permut.Append(permutations[i].ToString() + "\t");
+            }
+            streamWriter.WriteLine($"Using:\t{indexes}");
+            streamWriter.WriteLine($"\t\t{permut}");
+            streamWriter.WriteLine(unscrambled.ToString());
+            streamWriter.WriteLine("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
             streamWriter.Close();            
         }
 
@@ -58,25 +71,24 @@ namespace Lab_3
             }
             else
             {
-                List<int> small = new List<int> { 0 };
-                for (int i = 0; i < permutations.Length; i++)
-                {
-                    if (permutations[i] < input.Length)
-                        small.Add(permutations[i]);
-                }
-                int[] smallPermutation = small.ToArray();
+                
                 for (int i = 0; i < input.Length; i++)
                 {
-                    
-                    chars[i] = input[smallPermutation[i]];
-                }
+                    int j = i;
+                    do
+                    {
+                        j = permutations[j];
+                    }
+                    while (j >= input.Length);
+                    chars[i] = input[j];
+                }                
             }
 
             return string.Join(string.Empty, chars);
         }
 
         static int[] GetPermutations(string fileName)
-        {//function is OK
+        {
             List<int> result = new List<int>();
             StreamReader streamReader = new StreamReader(fileName);
             string line;
